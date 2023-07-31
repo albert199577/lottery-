@@ -27,11 +27,11 @@
         }
 
         .component {
-            @apply border rounded-full w-4 p-4 text-slate-700 bg-lime-200
+            @apply border rounded-full md:p-4 p-1.5 text-slate-700 bg-lime-200
         }
 
         .special {
-            @apply border rounded-full w-4 p-4 border-red-700 bg-amber-500
+            @apply border rounded-full md:p-4 p-1.5 border-red-700 bg-amber-500
         }
 
         section {
@@ -58,7 +58,7 @@
     <div class="flex justify-center">
         <button type="submit" class="btn">開抽</button>
     </div>
-    <div class="app grid gap-4 p-4 justify-center justify-items-center"></div>
+    <div class="app grid md:gap-4 gap-2 p-4 justify-center justify-items-center"></div>
     <script>
         let btn = document.querySelector('.btn');
         btn.addEventListener('click', lottery);
