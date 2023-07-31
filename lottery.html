@@ -7,7 +7,7 @@
     <title>無情抽獎機器人</title>
     <style type="text/tailwindcss">
         .btn {
-            @apply rounded-md px-4 py-2 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
+            @apply rounded-md px-6 py-4 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
         }
     
         .link {
@@ -26,9 +26,18 @@
             @apply text-red-500 text-sm
         }
 
+        .component {
+            @apply border rounded-full w-4 p-4 text-slate-700
+        }
+
+        .special {
+            @apply border rounded-full w-4 p-4 border-red-700 bg-amber-500
+        }
+
         section {
             @apply mb-4
         }
+
         </style>
 </head>
 <body class="container mx-auto mt-10 mb-10 max-w-lg">
@@ -36,13 +45,46 @@
     <section class="flex gap-4 justify-center">
         <div>
             <label for="">請輸入長</label>
-            <input type="text" name="height" id="height">
+            <input type="number" name="height" id="height" min="1" max="50">
         </div>
         <div>
             <label for="">請輸入寬</label>
-            <input type="text" name="width" id="width">
+            <input type="number" name="width" id="width" min="1" max="50">
+        </div>
+        <div>
+            <label for="">抽幾次</label>
+            <input type="number" name="num" id="num" min="1" max="50">
         </div>
     </section>
-    <button type="submit" class="btn">開抽</button>
+    <div class="flex justify-center">
+        <button type="submit" class="btn">開抽</button>
+    </div>
+    <div class="app grid gap-4 m-4 justify-center items-center justify-items-center"></div>
+    <script>
+        let btn = document.querySelector('.btn');
+        btn.addEventListener('click', lottery);
+        function lottery () {
+            let container = document.querySelector(".app");
+            let height = document.querySelector('#height').value;
+            let width = document.querySelector('#width').value;
+
+            container.innerHTML = '';
+            console.log(height * width)
+            let sum = height * width;
+            let fragment = document.createDocumentFragment();
+            let special = Math.floor(Math.random() * sum);
+            console.log(special)
+            
+            for (let i = 1; i <= sum; i++) {
+                let div = document.createElement("div");
+                div.setAttribute('class', 'component');
+                if (i == special) div.classList.add('special');
+                fragment.appendChild(div);
+            }
+            container.appendChild(fragment);
+
+            container.classList.add(`grid-cols-${width}`);
+        }
+    </script>
 </body>
 </html>
