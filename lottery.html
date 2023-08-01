@@ -44,19 +44,19 @@
     <section class="flex gap-2 justify-center">
         <div>
             <label for="height">長</label>
-            <input type="number" name="height" id="height" min="1" max="50" value="5">
+            <input type="number" name="height" id="height" min="1" max="20" value="5">
         </div>
         <div>
             <label for="width">寬</label>
-            <input type="number" name="width" id="width" min="1" max="50" value="16">
+            <input type="number" name="width" id="width" min="1" max="20" value="16">
         </div>
         <div>
             <label for="num">抽幾次</label>
-            <input type="number" name="num" id="num" min="1" max="50" value="1">
+            <input type="number" name="num" id="num" min="1" max="400" value="1">
         </div>
     </section>
     <div class="flex justify-center">
-        <button type="submit" class="btn">開抽</button>
+        <button type="button" class="btn">開抽</button>
     </div>
     <div class="app grid md:gap-4 gap-2 p-4 justify-center justify-items-center"></div>
     <script>
@@ -67,15 +67,15 @@
             let height = document.querySelector('#height').value;
             let width = document.querySelector('#width').value;
             let num = document.querySelector('#num').value;
-
-            container.innerHTML = '';
-            console.log(height * width)
             let sum = height * width;
+
+            if (num > sum) return window.alert(`長寬限制最多只能抽${sum}次`)
+            container.innerHTML = '';
             let fragment = document.createDocumentFragment();
             let specialArr = [];
             let counter = {};
             while (num > 0) {
-                let special = Math.floor(Math.random() * sum);
+                let special = Math.floor(Math.random() * sum + 1);
                 if (!counter[special]) {
                     counter[special] = 1;
                     specialArr.push(special);
