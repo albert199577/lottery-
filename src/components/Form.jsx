@@ -1,25 +1,8 @@
 import  React, { useState, useEffect } from 'react'
 
-const Form = () => {
-  const column = {
-    height: {
-      title: '長',
-      default: 5
-    },
-    width: {
-      title: '寬',
-      default: 16
-    },
-    num: {
-      title: '抽幾次',
-      default: 1
-    },
-  };
-  const [height ,setHeight] = useState(column.height.default);
-  const [width ,setWidth] = useState(column.width.default);
-  const [num ,setNum] = useState(column.num.default);
-  const [sum ,setSum] = useState(height * width);
-  const [data ,setData] = useState([]);
+const Form = ({setNum, setHeight, setData, setSum, setWidth, num, height, data, sum, width, column}) => {
+
+
 
   const handleHeigth = (e) => {
     setHeight(e.target.value);
@@ -30,22 +13,21 @@ const Form = () => {
   }
 
 	const handleClick = () => {
-    console.log(data)
-    setData([]);
     checkfull();
-    let SpecialArr = getSpecialArr()
-    buildcircle();
+    getSpecialData()
+
   }
 
   useEffect(() => {
     setSum(height * width);
+    handleClick();
   }, [width, height]);
 
   const checkfull = () => {
     if (num > sum) return alert(`長寬限制最多只能抽${sum}次`)
   }
 
-  const getSpecialArr = () => {
+  const getSpecialData = () => {
     setData([]);
     let counter = {};
     let temp = num;
@@ -59,10 +41,6 @@ const Form = () => {
       }
     }
     setData(newData);
-  }
-
-  const buildcircle = () => {
-    
   }
 
   return (
