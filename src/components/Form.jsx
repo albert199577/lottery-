@@ -20,7 +20,6 @@ const Form = ({setNum, setHeight, setData, setSum, setWidth, num, height, data, 
 
   useEffect(() => {
     setSum(height * width);
-    handleClick();
   }, [width, height]);
 
   const checkfull = () => {

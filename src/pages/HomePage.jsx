@@ -2,6 +2,7 @@ import { Input } from 'postcss';
 import { React, useState} from 'react'
 import Form from '../components/Form.jsx';
 import Lattice from '../components/Lattice.jsx';
+
 const HomePage = () => {
   const column = {
     height: {
@@ -21,8 +22,7 @@ const HomePage = () => {
   const [height ,setHeight] = useState(column.height.default);
   const [width ,setWidth] = useState(column.width.default);
   const [num ,setNum] = useState(column.num.default);
-  const [sum ,setSum] = useState();
-
+  const [sum ,setSum] = useState(width * height);
   return (
     <>
     <h1 className="my-10 text-3xl text-center text-cyan-500">一抽入魂 • 無情開抽</h1>
