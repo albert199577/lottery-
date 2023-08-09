@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage.jsx';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App w-screen h-screen flex flex-col justify-between'>
       <Nav />
       <HomePage />
       <Footer />

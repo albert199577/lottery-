@@ -25,11 +25,13 @@ const HomePage = () => {
   const [sum ,setSum] = useState(width * height);
   return (
     <>
-    <h1 className="my-10 text-3xl text-center text-cyan-500">一抽入魂 • 無情開抽</h1>
-    <Form 
-    setNum={setNum} setHeight={setHeight} setData={setData} setSum={setSum} setWidth={setWidth}
-    num={num} height={height} data={data} sum={sum} width={width} column={column}/>
-    <Lattice data={data} sum={sum} width={width}/>
+    <div>
+      <h1 className="my-10 text-3xl text-center text-cyan-500">一抽入魂 • 無情開抽</h1>
+      <Form 
+      setNum={setNum} setHeight={setHeight} setData={setData} setSum={setSum} setWidth={setWidth}
+      num={num} height={height} data={data} sum={sum} width={width} column={column}/>
+      <Lattice data={data} sum={sum} width={width}/>
+    </div>
     </>
   )
 }
