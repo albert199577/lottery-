@@ -5,17 +5,20 @@ const Form = ({setNum, setHeight, setData, setSum, setWidth, num, height, data, 
 
 
   const handleHeigth = (e) => {
-    setHeight(e.target.value);
+    let { value, min, max } = e.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    setHeight(value);
   }
 
   const handleWidth = (e) => {
-    setWidth(e.target.value);
+    let { value, min, max } = e.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    setWidth(value);
   }
 
 	const handleClick = () => {
     checkfull();
     getSpecialData()
-
   }
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const Form = ({setNum, setHeight, setData, setSum, setWidth, num, height, data, 
 			</div>
 			<div>
 				<label htmlFor="num">{column.num.title}</label>
-				<input type="number" name="num" id="num" min="1" max="400" defaultValue="1"  onChange={(e)=>{ setNum(e.target.value) }} />
+				<input type="number" name="num" id="num" min="1" max="400" defaultValue="1"  onChange={(e)=>{ setNum(Number(e.target.value)) }} />
 			</div>
     </section>
     <div className="flex justify-center">
